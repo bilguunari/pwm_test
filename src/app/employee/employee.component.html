@@ -1,0 +1,29 @@
+<div>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="name" placeholder="Name">
+    <input type="email" formControlName="email" placeholder="Email">
+    <button type="submit">{{ selectedEmployeeId ? 'Update' : 'Add' }}</button>
+    <button type="button" (click)="resetForm()">Clear</button>
+  </form>
+</div>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>
+          <button (click)="onEdit(employee)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

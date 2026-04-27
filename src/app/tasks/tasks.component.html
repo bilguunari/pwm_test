@@ -1,0 +1,36 @@
+<div>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <select formControlName="employeeId">
+      <option *ngFor="let employee of employees" [value]="employee.id">{{ employee.name }}</option>
+    </select>
+    <select formControlName="projectId">
+      <option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</option>
+    </select>
+    <input type="text" formControlName="taskName" placeholder="Task Name">
+    <button type="submit">{{ selectedTaskId ? 'Update' : 'Add' }}</button>
+    <button type="button" (click)="resetForm()">Clear</button>
+  </form>
+</div>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Employee</th>
+        <th>Project</th>
+        <th>Task</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.employeeName }}</td>
+        <td>{{ task.projectName }}</td>
+        <td>{{ task.taskName }}</td>
+        <td>
+          <button (click)="onEdit(task)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

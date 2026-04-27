@@ -1,0 +1,29 @@
+<div>
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="name" placeholder="Name">
+    <input type="text" formControlName="description" placeholder="Description">
+    <button type="submit">{{ selectedProjectId ? 'Update' : 'Add' }}</button>
+    <button type="button" (click)="resetForm()">Clear</button>
+  </form>
+</div>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.name }}</td>
+        <td>{{ project.description }}</td>
+        <td>
+          <button (click)="onEdit(project)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
